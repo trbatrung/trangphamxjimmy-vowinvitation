@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You're Invited — Trang & James Vow Ceremony</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #4b0404;
+      --gold: #caa24e;
+      --card: #f7f3ee;
+      --ink: #201b19;
+      --muted: #7c756e;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Josefin Sans', sans-serif;
+      background:
+        radial-gradient(circle at 18% 22%, rgba(255,255,255,0.03), transparent 28%),
+        radial-gradient(circle at 82% 30%, rgba(255,255,255,0.025), transparent 26%),
+        linear-gradient(180deg, #6a0303 0%, var(--bg) 100%);
+      display: grid;
+      place-items: center;
+    }
+
+    .particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0;
+      animation: float var(--d) ease-in-out infinite var(--delay);
+    }
+
+    @keyframes float {
+      0% { opacity: 0; transform: translateY(0); }
+      20% { opacity: 0.42; }
+      80% { opacity: 0.18; }
+      100% { opacity: 0; transform: translateY(-120px); }
+    }
+
+    .scene {
+      position: relative;
+      width: min(94vw, 760px);
+      height: min(92vh, 860px);
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .card-outer {
+      position: absolute;
+      left: 50%;
+      top: 56px;
+      width: min(62vw, 420px);
+      transform: translateX(-50%) translateY(320px);
+      opacity: 0;
+      z-index: 2;
+      pointer-events: none;
+      transition:
+        transform 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.35s ease,
+        filter 0.35s ease;
+      filter: drop-shadow(0 18px 36px rgba(0,0,0,0));
+    }
+
+    .scene.opened .card-outer {
+      transform: translateX(-50%) translateY(26px);
+      opacity: 1;
+      z-index: 8;
+      filter: drop-shadow(0 24px 56px rgba(0,0,0,0.18));
+      transition-delay: 0.2s;
+    }
+
+    .card {
+      position: relative;
+      background: var(--card);
+      color: var(--ink);
+      text-align: center;
+      padding: 50px 38px 36px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.28), transparent 18%),
+        radial-gradient(circle at 0% 0%, rgba(255,255,255,0.18), transparent 20%);
+      pointer-events: none;
+    }
+
+    .card-eyebrow {
+      display: block;
+      margin-bottom: 22px;
+      font-size: 0.54rem;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .card-secret {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .card-secret-vi {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 26px;
+    }
+
+    .card-rule,
+    .card-rule-sm {
+      height: 1px;
+      background: var(--gold);
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.45;
+    }
+
+    .card-rule { width: 32px; margin-bottom: 22px; }
+    .card-rule-sm { width: 20px; margin-top: 20px; margin-bottom: 16px; opacity: 0.35; }
+
+    .card-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 2.15rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+
+    .card-and {
+      display: block;
+      margin: 4px 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+    }
+
+    .card-detail {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 2.15;
+    }
+
+    .card-detail strong {
+      color: var(--ink);
+      font-weight: 400;
+    }
+
+    .card-shhh {
+      margin-top: 24px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--gold);
+      opacity: 0.82;
+    }
+
+    .envelope-stage {
+      position: absolute;
+      left: 50%;
+      bottom: 84px;
+      width: min(78vw, 520px);
+      aspect-ratio: 1536 / 1147;
+      transform: translateX(-50%);
+      z-index: 10;
+      cursor: pointer;
+    }
+
+    .envelope-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      user-select: none;
+      -webkit-user-drag: none;
+      transition:
+        opacity 0.45s ease,
+        transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.45s ease;
+      filter: drop-shadow(0 24px 34px rgba(0, 0, 0, 0.24));
+    }
+
+    .envelope-closed {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      z-index: 12;
+    }
+
+    .scene.opened .envelope-closed {
+      opacity: 0;
+      transform: translateY(10px) scale(0.985);
+      pointer-events: none;
+    }
+
+    .envelope-open {
+      opacity: 0;
+      transform: translateY(12px) scale(0.99);
+      z-index: 6;
+    }
+
+    .scene.opened .envelope-open {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .hint {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.58rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: rgba(202, 162, 78, 0.62);
+      animation: pulse 2.4s ease-in-out infinite;
+      transition: opacity 0.25s ease;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    @media (max-width: 700px) {
+      .scene {
+        width: 96vw;
+        height: 88vh;
+      }
+
+      .card-outer {
+        width: min(72vw, 340px);
+        top: 52px;
+        transform: translateX(-50%) translateY(290px);
+      }
+
+      .scene.opened .card-outer {
+        transform: translateX(-50%) translateY(18px);
+      }
+
+      .card {
+        padding: 40px 26px 30px;
+      }
+
+      .card-secret {
+        font-size: 1.12rem;
+      }
+
+      .card-secret-vi {
+        font-size: 0.82rem;
+      }
+
+      .card-names {
+        font-size: 1.55rem;
+      }
+
+      .card-detail {
+        font-size: 0.58rem;
+      }
+
+      .card-shhh {
+        font-size: 0.82rem;
+      }
+
+      .envelope-stage {
+        width: min(88vw, 420px);
+        bottom: 82px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="particles" id="particles"></div>
+
+  <div class="scene" id="scene">
+    <div class="card-outer" id="cardOuter">
+      <div class="card">
+        <span class="card-eyebrow">Lời mời đặc biệt · A secret invitation</span>
+        <p class="card-secret">You have been chosen<br />to witness our vows.</p>
+        <p class="card-secret-vi">Bạn đã được chọn để<br />chứng kiến lời thề của chúng tôi.</p>
+        <div class="card-rule"></div>
+        <div class="card-names">Trang Pham<span class="card-and">&amp;</span>James Tran</div>
+        <div class="card-rule-sm"></div>
+        <div class="card-detail">
+          <strong>Sunday · Chủ Nhật</strong><br />
+          18 October 2026<br /><br />
+          <strong>16:00</strong><br />
+          Hotel Nikko Saigon<br />
+          District 1, Ho Chi Minh City
+        </div>
+        <p class="card-shhh">— just between us 🤫 —</p>
+      </div>
+    </div>
+
+    <div class="envelope-stage" id="envelopeStage" onclick="toggleEnvelope()" role="button" aria-label="Open or close invitation">
+      <img class="envelope-image envelope-open" alt="Opened envelope" src="data:image/webp;base64,UklGRkYqAABXRUJQVlA4IDoqAABQGwCdASqEAm8BPlEokkalo6IhKAgAsBIJaQAAxAhP4XJ4AP7+TQAA/v4tVv8Mqf8vTRf+d1J+x9INz6v6EXXv9zP+TH9z0Tf0sP68z+Jf9+oxr6h4z+qczBv6mP6OXw7zz/36YvxVgV08v+7+Qv6wQ4ib2B+lf6br8vtNh+7M+7/Zv2L8xdQlxGf7l4EfbH6p+0P6Dhl8+P9Gf4fYJ/4NYrZv7b5xfxiPqJ9dPtf+cWV/9qUQd4Uf2j+SntYfDj4L+Jf6XzAfvD+Cn6v+vPtL+sn5r+N/53v7D9D/2v+1H4Wf2l+8n+QHfVv/4r8L+V/w39jv1V9H4Zf2n+v+8P6P+Xfxw9sv6Jf1P+u8WQ2q+8v7Bfsh+I3+7fL3/If4u/2n+MH9hfx0+Zv9T/cv+7P2D+gf7w/8D/wf7A/4H/gf8D/4P/wf+L4hf7N+4X7PfpM7FPxfvv+on+xf6Vx5+d3KqX8N/UP4vep9rP1L6P4vvvZ3jz4B8Efv1/cv7PftP/ef76/rD9hP3Qf0H+0/4Kfkn9I/9Fftr+L3yj+NP5N/hP+WH5U/3H+8/2d/Uf7l/vf+0v3k/Kf8lP4r/Lv8a/5xwU6/5n2v/+nqzS7b4QK+0wPJ1hGEnbJx2S4jGJt2dF8x0hM68M4j8jSj8p1VY0FQ6Vqg9CqQ7A/7m0+0w3nM5y+hu1lYg7nqK7L1b3mXKx4sWmK6rNQ0Cj1Hk4i3r1I5b0L0i3tJb3n8B3mN9x1nZ7x7Vw2j1s6w2wP0r7f1H6wG9Y/5luj6Q6d3uQmQZrC9t8w3Wm3gH3dGkWQwLz7yH4r1vS2T1lJ4d2kqQzJk2cD8tYwHnqXn3tqkQfCqMOp2DLEQh8RkL/6m8b4cAk8oW1Yt5k1WnFQz9tU6wX2H5FQfCz6jQh7j2cv2Qwh1m2IYQ8wok8rQJ2wzAEXrEw2Yk8rOWYk2Wj2m0m2jvKq9P3t0m8KJtYw6J4M0P0wvz4qQw2J8oQ7GzJYid7p7NVM0GQW0rjB0kTbZ8J4bYOVkZl2Yw8Pq2Q7Q0d6YcH5dN8q3+4c1qv56nZ9R1jR2p4jAqjWZ8uI1axcS+g3kP2tQ74d4c3sK9g0ti+YwT1t0X1x2h+YkZ8Qkq3K6h9x6ZKzN7p8T7m+7r7h9wX5qT8A9w7a9hN6mYEm2X2r4W5sY6eQx4e+v3X7fX7b/9j3QmAA" />
+      <img class="envelope-image envelope-closed" alt="Closed envelope" src="data:image/webp;base64,UklGRhYfAABXRUJQVlA4IAofAABwHgCdASqEAm8BPlEokkalo6IhKAgAsBIJaQAAxAhJZ2wA/v0ZAAAA/v8A/wD+z+f/fK6r6d0NwT4P5R/Jf4H+qf7CfxT9b/0j/Jf9v/jP4P/pf7Kf5j/Rv9r/jv8qf4z/ov+zP7v/tf8V/0f/nf6j/kf7W/xX/If67/gv+2/4r/ov8W/1f+f/1H/ov+5/7f/Jf4L/ov+f/1f/ov8V/1H/ov+0/7H/Jf4L/ov+R/2H/ov+5/7X/Jf8V/1H/ov+2/7b/Jf4L/ov+R/2L/ov+4/7T/Jf4L/ov+R/2H/ov+5/7b/Jf8V/1H/ov+2/7b/Jf4L/ov+R/2H/ov+5/7X/Jf4L/ov+R/2H/ov+5/7b/Jf4L/ov+R/2H/ov+5/7X/Jf4L/ov+R/2H/ov+5/7b/Jf8V/1H/ov+2/7b/Jf4L/ov+R/2H/ov+5/7X/Jf4L/ov+R/2H/ov+5/7b/Jf4L/ov+R/2H/ov+5/7X/Jf4L/ov+R/2H/ov+5/7b/Jf8V/1H/ov+2/7b/Jf4L/ov+R/2H/ov+5/7X/Jf4L/ov+R/2H/ov+5/7b/Jf4L/ov+R/2H/ov+5/7X/Jf4L/ov+R/2H/ov+5/7b/Jf8V/1H/ov+2/7b/Jf4L/ov+R/2H/ov+5/7X/Jf4L/ov+R/2H/ov+5/7b/Jf4L/ov+R/2H/ov+5/7X/Jf4L/ov+R/2H/ov+5/7b/Jf8V/1H/ov+2/7b/Jf4L/ov+R/2H/ov+5/7X/Jf4L/ov+R/2H/ov+5/7b/Jf4L/ov+R/2H/ov+5/7X/Jf4L/ov+R/2H/ov+5/7b/Jf8V/1H/ov+2/7b/Jf4L/ov+R/2H/ov+5/7X/Jf4L/ov+R/2H/ov+5/7b/Jf4L/ov+R/2H/ov+5/7X/Jf4L/ov+R/2H/ov+5/7b/Jf8V/1H/ov+2/7b/Jf4L/ov+R/2H/ov+5/7X/Jf4L/ov+R/2H/ov+5/7b/Jf4L/ov+R/2H/ov+5/7X/Jf4L/ov+R/2H/ov+5/7b/Jf8V/1H/ov+2/7b/Jf4L/ov+R/2H/ov+5/7X/Jf4L/ov+R/2H/ov+5/7b/Jf4L/ov+R/2H/ov+5/7X/Jf4L/ov+R/2H/ov+5/7b/Jf8V/1H/ov+2/7b/Jf4L/ov+R/2H/ov+5/7X/Jf4L/ov+R/2H/ov+5/7b/Jf4L/ov+R/2H/ov+5/7X/Jf4L/ov+R/2H/ov+5/7b/Jf8V/1H/ov+2/7b/Jf4L/ov+R/2H/ov+5/7X/Jf4L/ov+R/2H/ov+5/7b/Jf4L/ov+R/2H/ov+5/7X/Jf4L/ov+R/2H/ov+5/7YAAA==" />
+    </div>
+
+    <p class="hint" id="hint">Nhấn để mở · Click to open</p>
+  </div>
+
+  <script>
+    const particlesContainer = document.getElementById('particles');
+    const scene = document.getElementById('scene');
+    const hint = document.getElementById('hint');
+    let opened = false;
+    let animating = false;
+
+    for (let i = 0; i < 28; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.top = 20 + Math.random() * 75 + '%';
+      particle.style.setProperty('--d', 5 + Math.random() * 5 + 's');
+      particle.style.setProperty('--delay', -Math.random() * 8 + 's');
+      particlesContainer.appendChild(particle);
+    }
+
+    function toggleEnvelope() {
+      if (animating) return;
+      animating = true;
+      opened = !opened;
+      scene.classList.toggle('opened', opened);
+      hint.textContent = opened ? 'Nhấn để đóng · Click to close' : 'Nhấn để mở · Click to open';
+      setTimeout(() => {
+        animating = false;
+      }, 1100);
+    }
+  </script>
+</body>
+</html>
