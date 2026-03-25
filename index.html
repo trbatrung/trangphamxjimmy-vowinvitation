@@ -92,24 +92,30 @@
     .paper-wrap {
       position: absolute;
       left: 50%;
-      bottom: 62px; /* same baseline as envelope */
+      bottom: 62px;
       width: min(46vw, 330px);
       transform: translateX(-50%) translateY(260px);
       opacity: 0;
       z-index: 8;
       pointer-events: none;
+      /* CLOSING transition: fast hide, no delay */
       transition:
-        transform 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.12s,
-        opacity   0.38s ease                            0.12s,
-        filter    0.38s ease;
+        transform 0.4s cubic-bezier(0.55, 0, 1, 0.45) 0s,
+        opacity   0.25s ease                           0s,
+        filter    0.25s ease                           0s;
       filter: drop-shadow(0 10px 18px rgba(0,0,0,0));
     }
 
     .scene.opened .paper-wrap {
-      /* slide up so paper peeks out above the envelope body */
-      transform: translateX(-50%) translateY(-60px);
+      /* slide up higher to reveal all content (was -60px, now -110px) */
+      transform: translateX(-50%) translateY(-110px);
       opacity: 1;
       filter: drop-shadow(0 18px 28px rgba(58,32,22,0.15));
+      /* OPENING transition: delayed to wait for envelope fade-out */
+      transition:
+        transform 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.4s,
+        opacity   0.5s ease                             0.4s,
+        filter    0.5s ease                             0.4s;
     }
 
     .paper {
@@ -160,6 +166,7 @@
       letter-spacing: 0.4em;
       text-transform: uppercase;
       color: var(--gold);
+      line-height: 1.8;
     }
 
     .paper-secret {
@@ -275,12 +282,12 @@
     .env-back {
       z-index: 4;
       pointer-events: none;
-      clip-path: inset(0 0 52% 0); /* top half only = the open flap triangle */
+      clip-path: inset(0 0 52% 0);
     }
 
     .env-back img {
       opacity: 0;
-      mix-blend-mode: multiply; /* makes black background transparent */
+      mix-blend-mode: multiply;
       transition: opacity 0.5s ease 0.1s;
     }
 
@@ -292,12 +299,12 @@
     .env-front {
       z-index: 12;
       pointer-events: none;
-      clip-path: inset(48% 0 0 0); /* bottom half only = the rectangular body */
+      clip-path: inset(48% 0 0 0);
     }
 
     .env-front img {
       opacity: 0;
-      mix-blend-mode: multiply; /* makes black background transparent */
+      mix-blend-mode: multiply;
       transition: opacity 0.5s ease 0.1s;
     }
 
@@ -367,6 +374,10 @@
         bottom: 140px;
       }
 
+      .scene.opened .paper-wrap {
+        transform: translateX(-50%) translateY(-130px);
+      }
+
       .paper {
         padding: 28px 18px 28px;
       }
@@ -394,7 +405,7 @@
     <!-- Invitation paper — z-index 8, sandwiched between envelope layers -->
     <div class="paper-wrap">
       <div class="paper">
-        <span class="paper-eyebrow">Lời mời đặc biệt · A secret invitation</span>
+        <span class="paper-eyebrow">Lời mời đặc biệt<br />A secret invitation</span>
 
         <p class="paper-secret">
           You have been chosen<br />
