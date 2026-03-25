@@ -342,7 +342,7 @@
 
     @keyframes pulse {
       0%, 100% { opacity: 0.5; }
-      50%       { opacity: 1;   }
+      50% { opacity: 1; }
     }
 
     @media (max-width: 700px) {
@@ -353,27 +353,27 @@
 
       .paper-wrap {
         width: min(58vw, 260px);
-        bottom: 140px;
+        bottom: 108px;
       }
 
       .scene.opened .paper-wrap {
-        transform: translateX(-50%) translateY(-150px);
+        transform: translateX(-50%) translateY(-108px);
       }
 
       .paper {
-        padding: 28px 18px 40px;
-        min-height: 470px;
+        padding: 26px 18px 34px;
+        min-height: 430px;
       }
 
-      .paper-secret    { font-size: 0.92rem; }
+      .paper-secret { font-size: 0.92rem; }
       .paper-secret-vi { font-size: 0.72rem; }
-      .paper-names     { font-size: 1.18rem; }
-      .paper-detail    { font-size: 0.48rem; line-height: 1.9; }
-      .paper-note      { font-size: 0.72rem; margin-top: 14px; }
+      .paper-names { font-size: 1.18rem; }
+      .paper-detail { font-size: 0.48rem; line-height: 1.9; }
+      .paper-note { font-size: 0.72rem; margin-top: 14px; }
 
       .envelope-layer {
         width: min(98vw, 520px);
-        bottom: 50px;
+        bottom: 82px;
       }
 
       .hint { font-size: 0.5rem; letter-spacing: 0.24em; }
@@ -384,7 +384,6 @@
   <div class="particles" id="particles"></div>
 
   <div class="scene" id="scene">
-
     <div class="paper-wrap">
       <div class="paper">
         <span class="paper-eyebrow">Lời mời đặc biệt<br />A secret invitation</span>
@@ -440,34 +439,43 @@
 
   <script>
     const container = document.getElementById("particles");
+
     for (let i = 0; i < 28; i++) {
       const p = document.createElement("div");
       p.className = "particle";
       const size = 1.5 + Math.random() * 1.5;
+
       p.style.cssText = `
         left: ${Math.random() * 100}%;
-        top:  ${20 + Math.random() * 72}%;
-        width:  ${size}px;
+        top: ${20 + Math.random() * 72}%;
+        width: ${size}px;
         height: ${size}px;
       `;
+
       p.style.setProperty("--d", 5 + Math.random() * 5 + "s");
       p.style.setProperty("--delay", -Math.random() * 8 + "s");
       container.appendChild(p);
     }
 
     const scene = document.getElementById("scene");
-    const hint  = document.getElementById("hint");
-    let opened = false, animating = false;
+    const hint = document.getElementById("hint");
+    let opened = false;
+    let animating = false;
 
     function toggleEnvelope() {
       if (animating) return;
+
       animating = true;
       opened = !opened;
       scene.classList.toggle("opened", opened);
+
       hint.textContent = opened
         ? "Nhấn để đóng · Click to close"
         : "Nhấn để mở · Click to open";
-      setTimeout(() => animating = false, 850);
+
+      setTimeout(() => {
+        animating = false;
+      }, 850);
     }
   </script>
 </body>
