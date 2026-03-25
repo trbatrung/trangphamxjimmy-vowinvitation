@@ -5,16 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>You're Invited — Trang & James Vow Ceremony</title>
   <meta name="description" content="Wedding invitation for Trang and James" />
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Josefin+Sans:wght@200;300;400&display=swap"
-    rel="stylesheet"
-  />
-
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet" />
   <style>
-    *,
-    *::before,
-    *::after {
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -29,12 +22,11 @@
       --muted: #7c756e;
     }
 
-    html,
-    body {
+    html, body {
       width: 100%;
       height: 100%;
       overflow: hidden;
-      font-family: "Josefin Sans", sans-serif;
+      font-family: 'Josefin Sans', sans-serif;
       background:
         radial-gradient(circle at 18% 22%, rgba(255,255,255,0.03), transparent 28%),
         radial-gradient(circle at 82% 30%, rgba(255,255,255,0.025), transparent 26%),
@@ -84,6 +76,7 @@
       height: min(92vh, 860px);
       overflow: hidden;
       z-index: 1;
+      user-select: none;
     }
 
     .card-outer {
@@ -121,7 +114,7 @@
     }
 
     .card::before {
-      content: "";
+      content: '';
       position: absolute;
       inset: 0;
       background:
@@ -140,7 +133,7 @@
     }
 
     .card-secret {
-      font-family: "Cormorant Garamond", serif;
+      font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-size: 1.5rem;
       font-weight: 300;
@@ -149,7 +142,7 @@
     }
 
     .card-secret-vi {
-      font-family: "Cormorant Garamond", serif;
+      font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-size: 1rem;
       color: var(--muted);
@@ -179,7 +172,7 @@
     }
 
     .card-names {
-      font-family: "Cormorant Garamond", serif;
+      font-family: 'Cormorant Garamond', serif;
       font-weight: 300;
       font-size: 2.15rem;
       letter-spacing: 0.12em;
@@ -190,7 +183,7 @@
     .card-and {
       display: block;
       margin: 4px 0;
-      font-family: "Cormorant Garamond", serif;
+      font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-size: 1rem;
       color: var(--gold);
@@ -212,7 +205,7 @@
 
     .card-shhh {
       margin-top: 24px;
-      font-family: "Cormorant Garamond", serif;
+      font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-size: 1rem;
       color: var(--gold);
@@ -284,8 +277,7 @@
     }
 
     @keyframes pulse {
-      0%,
-      100% {
+      0%, 100% {
         opacity: 0.5;
       }
       50% {
@@ -352,27 +344,11 @@
     <div class="card-outer" id="cardOuter">
       <div class="card">
         <span class="card-eyebrow">Lời mời đặc biệt · A secret invitation</span>
-
-        <p class="card-secret">
-          You have been chosen<br />
-          to witness our vows.
-        </p>
-
-        <p class="card-secret-vi">
-          Bạn đã được chọn để<br />
-          chứng kiến lời thề của chúng tôi.
-        </p>
-
+        <p class="card-secret">You have been chosen<br />to witness our vows.</p>
+        <p class="card-secret-vi">Bạn đã được chọn để<br />chứng kiến lời thề của chúng tôi.</p>
         <div class="card-rule"></div>
-
-        <div class="card-names">
-          Trang Pham
-          <span class="card-and">&amp;</span>
-          James Tran
-        </div>
-
+        <div class="card-names">Trang Pham<span class="card-and">&amp;</span>James Tran</div>
         <div class="card-rule-sm"></div>
-
         <div class="card-detail">
           <strong>Sunday · Chủ Nhật</strong><br />
           18 October 2026<br /><br />
@@ -380,51 +356,33 @@
           Hotel Nikko Saigon<br />
           District 1, Ho Chi Minh City
         </div>
-
         <p class="card-shhh">— just between us 🤫 —</p>
       </div>
     </div>
 
-    <div
-      class="envelope-stage"
-      id="envelopeStage"
-      onclick="toggleEnvelope()"
-      role="button"
-      aria-label="Open or close invitation"
-    >
-      <img
-        class="envelope-image envelope-open"
-        alt="Opened envelope"
-        src="./images/envelope-open.jpeg"
-        onerror="this.style.display='none'"
-      />
-
-      <img
-        class="envelope-image envelope-closed"
-        alt="Closed envelope"
-        src="./images/envelope-close.jpeg"
-        onerror="this.style.display='none'"
-      />
+    <div class="envelope-stage" id="envelopeStage" onclick="toggleEnvelope()" role="button" aria-label="Open or close invitation">
+      <img class="envelope-image envelope-open" alt="Opened envelope" src="./envelope open.png" onerror="this.style.display='none'" />
+      <img class="envelope-image envelope-closed" alt="Closed envelope" src="./envelope close.png" onerror="this.style.display='none'" />
     </div>
 
     <p class="hint" id="hint">Nhấn để mở · Click to open</p>
   </div>
 
   <script>
-    const particlesContainer = document.getElementById("particles");
-    const scene = document.getElementById("scene");
-    const hint = document.getElementById("hint");
+    const particlesContainer = document.getElementById('particles');
+    const scene = document.getElementById('scene');
+    const hint = document.getElementById('hint');
 
     let opened = false;
     let animating = false;
 
     for (let i = 0; i < 28; i++) {
-      const particle = document.createElement("div");
-      particle.className = "particle";
-      particle.style.left = Math.random() * 100 + "%";
-      particle.style.top = 20 + Math.random() * 75 + "%";
-      particle.style.setProperty("--d", 5 + Math.random() * 5 + "s");
-      particle.style.setProperty("--delay", -Math.random() * 8 + "s");
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.top = 20 + Math.random() * 75 + '%';
+      particle.style.setProperty('--d', 5 + Math.random() * 5 + 's');
+      particle.style.setProperty('--delay', -Math.random() * 8 + 's');
       particlesContainer.appendChild(particle);
     }
 
@@ -434,10 +392,10 @@
       animating = true;
       opened = !opened;
 
-      scene.classList.toggle("opened", opened);
+      scene.classList.toggle('opened', opened);
       hint.textContent = opened
-        ? "Nhấn để đóng · Click to close"
-        : "Nhấn để mở · Click to open";
+        ? 'Nhấn để đóng · Click to close'
+        : 'Nhấn để mở · Click to open';
 
       setTimeout(() => {
         animating = false;
