@@ -64,36 +64,30 @@
     }
 
     @keyframes float {
-      0% {
-        opacity: 0;
-        transform: translateY(0);
-      }
-      20% {
-        opacity: 0.42;
-      }
-      80% {
-        opacity: 0.18;
-      }
-      100% {
-        opacity: 0;
-        transform: translateY(-120px);
-      }
+      0% { opacity: 0; transform: translateY(0); }
+      20% { opacity: 0.42; }
+      80% { opacity: 0.18; }
+      100% { opacity: 0; transform: translateY(-120px); }
     }
 
     .scene {
       position: relative;
       width: min(94vw, 760px);
-      height: min(92vh, 900px);
+      height: min(96vh, 940px);
       overflow: hidden;
       z-index: 1;
       user-select: none;
     }
 
     .paper-wrap {
+      /* --rise = how far the card travels up when opened.
+         Less negative = card stays more nested in the envelope (more dramatic).
+         Nudge by ~10px if the bottom line ever touches the flap on your real art. */
+      --rise: -158px;
       position: absolute;
       left: 50%;
       bottom: 62px;
-      width: min(50vw, 360px);
+      width: min(52vw, 372px);
       transform: translateX(-50%) translateY(260px);
       opacity: 0;
       z-index: 8;
@@ -106,7 +100,7 @@
     }
 
     .scene.opened .paper-wrap {
-      transform: translateX(-50%) translateY(-230px);
+      transform: translateX(-50%) translateY(var(--rise));
       opacity: 1;
       filter: drop-shadow(0 18px 28px rgba(58,32,22,0.15));
       transition:
@@ -122,8 +116,8 @@
         linear-gradient(180deg, var(--paper-top) 0%, var(--paper) 100%);
       color: var(--paper-ink);
       text-align: center;
-      padding: 40px 30px 44px;
-      min-height: 640px;
+      padding: 30px 28px 92px;
+      min-height: 560px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -144,16 +138,13 @@
       background-size: 12px 12px, 15px 15px;
       background-position: 0 0, 3px 4px;
       opacity: 0.5;
-      mix-blend-mode: normal;
       pointer-events: none;
     }
 
     .paper::after {
       content: "";
       position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
+      left: 0; right: 0; top: 0;
       height: 16px;
       background:
         radial-gradient(circle at 6px 18px, transparent 10px, rgba(0,0,0,0.18) 10.5px, rgba(0,0,0,0.08) 11px, transparent 12px) repeat-x;
@@ -164,8 +155,8 @@
 
     .paper-eyebrow {
       display: block;
-      margin-bottom: 28px;
-      font-size: 0.5rem;
+      margin-bottom: 20px;
+      font-size: 0.46rem;
       letter-spacing: 0.4em;
       text-transform: uppercase;
       color: var(--gold);
@@ -197,13 +188,9 @@
       margin-left: auto;
       margin-right: auto;
       opacity: 0.42;
-    }
-
-    .paper-rule-sm {
       width: 16px;
       margin-top: 10px;
       margin-bottom: 12px;
-      opacity: 0.32;
     }
 
     .paper-rule {
@@ -211,7 +198,7 @@
       align-items: center;
       gap: 8px;
       width: 100%;
-      margin: 4px 0 20px;
+      margin: 4px 0 14px;
     }
     .paper-rule::before,
     .paper-rule::after {
@@ -222,23 +209,18 @@
       opacity: 0.5;
     }
     .paper-rule .dot {
-      width: 3px;
-      height: 3px;
+      width: 3px; height: 3px;
       background: var(--gold);
       opacity: 0.55;
       transform: rotate(45deg);
       display: inline-block;
     }
-    .paper-rule .dot.big {
-      width: 4.5px;
-      height: 4.5px;
-      opacity: 0.7;
-    }
+    .paper-rule .dot.big { width: 4.5px; height: 4.5px; opacity: 0.7; }
 
     .paper-names {
       font-family: "Cormorant Garamond", serif;
       font-weight: 300;
-      font-size: 2rem;
+      font-size: 1.78rem;
       letter-spacing: 0.01em;
       line-height: 1.15;
       color: var(--paper-ink);
@@ -249,49 +231,46 @@
       margin: 4px 0;
       font-family: "Cormorant Garamond", serif;
       font-style: italic;
-      font-size: 0.9rem;
+      font-size: 0.82rem;
       color: var(--gold);
     }
 
     .paper-detail {
-      font-size: 0.52rem;
+      font-size: 0.48rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--paper-ink-faint);
-      line-height: 2;
+      line-height: 1.85;
     }
 
-    .paper-detail strong {
-      color: var(--paper-ink-soft);
-      font-weight: 500;
-    }
+    .paper-detail strong { color: var(--paper-ink-soft); font-weight: 500; }
 
     .paper-kinhmoi {
       font-family: "Cormorant Garamond", serif;
-      font-size: 0.75rem;
+      font-size: 0.68rem;
       font-weight: 500;
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--paper-ink-soft);
-      margin: 16px 0;
+      margin: 12px 0;
     }
 
     .paper-vow-text {
       font-family: "Cormorant Garamond", serif;
       font-style: italic;
-      font-size: 0.88rem;
+      font-size: 0.8rem;
       font-weight: 300;
-      line-height: 1.6;
+      line-height: 1.55;
       color: var(--paper-ink-soft);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .paper-vow-ask {
       font-family: "Cormorant Garamond", serif;
       font-style: normal;
       font-weight: 500;
-      font-size: 0.95rem;
-      line-height: 1.55;
+      font-size: 0.86rem;
+      line-height: 1.5;
       color: var(--paper-ink);
     }
 
@@ -307,8 +286,8 @@
     .envelope-layer {
       position: absolute;
       left: 50%;
-      bottom: 62px;
-      width: min(92vw, 660px);
+      bottom: 56px;
+      width: min(82vw, 604px);
       aspect-ratio: 1536 / 1147;
       transform: translateX(-50%);
     }
@@ -323,64 +302,23 @@
       -webkit-user-drag: none;
     }
 
-    .env-back {
-      z-index: 4;
-      pointer-events: none;
-      clip-path: inset(0 0 52% 0);
-    }
+    .env-back { z-index: 4; pointer-events: none; clip-path: inset(0 0 52% 0); }
+    .env-back img { opacity: 0; mix-blend-mode: multiply; transition: opacity 0.5s ease 0.1s; }
+    .scene.opened .env-back img { opacity: 1; }
 
-    .env-back img {
-      opacity: 0;
-      mix-blend-mode: multiply;
-      transition: opacity 0.5s ease 0.1s;
-    }
+    .env-front { z-index: 12; pointer-events: none; clip-path: inset(48% 0 0 0); }
+    .env-front img { opacity: 0; mix-blend-mode: multiply; transition: opacity 0.5s ease 0.1s; }
+    .scene.opened .env-front img { opacity: 1; }
 
-    .scene.opened .env-back img {
-      opacity: 1;
-    }
-
-    .env-front {
-      z-index: 12;
-      pointer-events: none;
-      clip-path: inset(48% 0 0 0);
-    }
-
-    .env-front img {
-      opacity: 0;
-      mix-blend-mode: multiply;
-      transition: opacity 0.5s ease 0.1s;
-    }
-
-    .scene.opened .env-front img {
-      opacity: 1;
-    }
-
-    .env-closed {
-      z-index: 15;
-      cursor: pointer;
-    }
-
+    .env-closed { z-index: 15; cursor: pointer; }
     .env-closed img {
       filter: drop-shadow(0 24px 34px rgba(0,0,0,0.24));
-      transition:
-        opacity   0.3s ease,
-        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
     }
+    .scene.opened .env-closed { pointer-events: none; }
+    .scene.opened .env-closed img { opacity: 0; transform: translateY(8px) scale(0.985); }
 
-    .scene.opened .env-closed {
-      pointer-events: none;
-    }
-
-    .scene.opened .env-closed img {
-      opacity: 0;
-      transform: translateY(8px) scale(0.985);
-    }
-
-    .env-open-click {
-      z-index: 13;
-      cursor: pointer;
-      opacity: 0;
-    }
+    .env-open-click { z-index: 13; cursor: pointer; opacity: 0; }
 
     .hint {
       position: absolute;
@@ -397,99 +335,35 @@
       z-index: 20;
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 0.5; }
-      50% { opacity: 1; }
-    }
+    @keyframes pulse { 0%,100%{opacity:0.5;} 50%{opacity:1;} }
 
     @media (max-width: 700px) {
-      .scene {
-        width: 100vw;
-        height: 100svh;
-      }
-
-      .paper-wrap {
-        width: clamp(250px, 66vw, 320px);
-        bottom: clamp(84px, 12svh, 112px);
-      }
-
-      .scene.opened .paper-wrap {
-        transform: translateX(-50%) translateY(clamp(-122px, -14svh, -104px));
-      }
-
-      .paper {
-        padding: 26px 18px 34px;
-        min-height: clamp(420px, 56svh, 500px);
-      }
-
+      .scene { width: 100vw; height: 100svh; }
+      .paper-wrap { --rise: clamp(-150px, -17svh, -128px); width: clamp(255px, 70vw, 330px); bottom: clamp(72px, 9svh, 96px); }
+      .paper { padding: 24px 18px 84px; min-height: clamp(430px, 58svh, 500px); }
+      .paper-eyebrow { margin-bottom: 16px; }
       .paper-secret { font-size: 0.92rem; }
       .paper-secret-vi { font-size: 0.72rem; }
-      .paper-names { font-size: 1.18rem; }
-      .paper-detail { font-size: 0.48rem; line-height: 1.9; }
+      .paper-names { font-size: 1.5rem; }
+      .paper-vow-text { font-size: 0.78rem; }
+      .paper-vow-ask { font-size: 0.84rem; }
+      .paper-detail { font-size: 0.46rem; line-height: 1.8; }
       .paper-note { font-size: 0.72rem; margin-top: 14px; }
-
-      .envelope-layer {
-        width: clamp(430px, 135vw, 720px);
-        bottom: clamp(50px, 6.5svh, 78px);
-      }
-
-      .hint {
-        font-size: 0.5rem;
-        letter-spacing: 0.24em;
-        bottom: max(18px, env(safe-area-inset-bottom, 0px));
-      }
+      .envelope-layer { width: clamp(430px, 135vw, 720px); bottom: clamp(50px, 6.5svh, 78px); }
+      .hint { font-size: 0.5rem; letter-spacing: 0.24em; bottom: max(18px, env(safe-area-inset-bottom, 0px)); }
     }
 
     @media (max-width: 700px) and (max-height: 760px) {
-      .scene {
-        height: 100svh;
-      }
-
-      .paper-wrap {
-        width: clamp(240px, 64vw, 300px);
-        bottom: clamp(76px, 10svh, 96px);
-      }
-
-      .scene.opened .paper-wrap {
-        transform: translateX(-50%) translateY(clamp(-108px, -12svh, -92px));
-      }
-
-      .paper {
-        min-height: clamp(390px, 52svh, 450px);
-        padding: 22px 16px 28px;
-      }
-
-      .paper-secret {
-        font-size: 0.88rem;
-      }
-
-      .paper-secret-vi {
-        font-size: 0.68rem;
-        margin-bottom: 12px;
-      }
-
-      .paper-names {
-        font-size: 1.06rem;
-      }
-
-      .paper-detail {
-        font-size: 0.44rem;
-        line-height: 1.8;
-      }
-
-      .paper-note {
-        font-size: 0.68rem;
-        margin-top: 12px;
-      }
-
-      .envelope-layer {
-        width: clamp(400px, 128vw, 680px);
-        bottom: clamp(48px, 6svh, 72px);
-      }
-
-      .hint {
-        font-size: 0.46rem;
-      }
+      .scene { height: 100svh; }
+      .paper-wrap { --rise: clamp(-132px, -15svh, -114px); width: clamp(245px, 66vw, 308px); bottom: clamp(66px, 8svh, 88px); }
+      .paper { min-height: clamp(400px, 54svh, 460px); padding: 20px 16px 76px; }
+      .paper-secret { font-size: 0.88rem; }
+      .paper-secret-vi { font-size: 0.68rem; margin-bottom: 12px; }
+      .paper-names { font-size: 1.36rem; }
+      .paper-detail { font-size: 0.43rem; line-height: 1.75; }
+      .paper-note { font-size: 0.68rem; margin-top: 12px; }
+      .envelope-layer { width: clamp(400px, 128vw, 680px); bottom: clamp(48px, 6svh, 72px); }
+      .hint { font-size: 0.46rem; }
     }
   </style>
 </head>
@@ -551,43 +425,25 @@
 
   <script>
     const container = document.getElementById("particles");
-
     for (let i = 0; i < 28; i++) {
       const p = document.createElement("div");
       p.className = "particle";
       const size = 1.5 + Math.random() * 1.5;
-
-      p.style.cssText = `
-        left: ${Math.random() * 100}%;
-        top: ${20 + Math.random() * 72}%;
-        width: ${size}px;
-        height: ${size}px;
-      `;
-
+      p.style.cssText = `left:${Math.random()*100}%;top:${20+Math.random()*72}%;width:${size}px;height:${size}px;`;
       p.style.setProperty("--d", 5 + Math.random() * 5 + "s");
       p.style.setProperty("--delay", -Math.random() * 8 + "s");
       container.appendChild(p);
     }
-
     const scene = document.getElementById("scene");
     const hint = document.getElementById("hint");
-    let opened = false;
-    let animating = false;
-
+    let opened = false, animating = false;
     function toggleEnvelope() {
       if (animating) return;
-
       animating = true;
       opened = !opened;
       scene.classList.toggle("opened", opened);
-
-      hint.textContent = opened
-        ? "Nhấn để đóng · Click to close"
-        : "Nhấn để mở · Click to open";
-
-      setTimeout(() => {
-        animating = false;
-      }, 850);
+      hint.textContent = opened ? "Nhấn để đóng · Click to close" : "Nhấn để mở · Click to open";
+      setTimeout(() => { animating = false; }, 850);
     }
   </script>
 </body>
