@@ -93,7 +93,7 @@
       position: absolute;
       left: 50%;
       bottom: 62px;
-      width: min(46vw, 330px);
+      width: min(50vw, 360px);
       transform: translateX(-50%) translateY(260px);
       opacity: 0;
       z-index: 8;
@@ -106,7 +106,7 @@
     }
 
     .scene.opened .paper-wrap {
-      transform: translateX(-50%) translateY(-150px);
+      transform: translateX(-50%) translateY(-230px);
       opacity: 1;
       filter: drop-shadow(0 18px 28px rgba(58,32,22,0.15));
       transition:
@@ -122,8 +122,8 @@
         linear-gradient(180deg, var(--paper-top) 0%, var(--paper) 100%);
       color: var(--paper-ink);
       text-align: center;
-      padding: 34px 24px 44px;
-      min-height: 525px;
+      padding: 40px 30px 44px;
+      min-height: 640px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -164,8 +164,8 @@
 
     .paper-eyebrow {
       display: block;
-      margin-bottom: 16px;
-      font-size: 0.44rem;
+      margin-bottom: 28px;
+      font-size: 0.5rem;
       letter-spacing: 0.4em;
       text-transform: uppercase;
       color: var(--gold);
@@ -191,18 +191,12 @@
       margin-bottom: 14px;
     }
 
-    .paper-rule,
     .paper-rule-sm {
       height: 1px;
       background: var(--gold);
       margin-left: auto;
       margin-right: auto;
       opacity: 0.42;
-    }
-
-    .paper-rule {
-      width: 24px;
-      margin-bottom: 12px;
     }
 
     .paper-rule-sm {
@@ -212,24 +206,51 @@
       opacity: 0.32;
     }
 
+    .paper-rule {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      margin: 4px 0 20px;
+    }
+    .paper-rule::before,
+    .paper-rule::after {
+      content: '';
+      flex: 1;
+      height: 0.5px;
+      background: var(--paper-ink-faint);
+      opacity: 0.5;
+    }
+    .paper-rule .dot {
+      width: 3px;
+      height: 3px;
+      background: var(--gold);
+      opacity: 0.55;
+      transform: rotate(45deg);
+      display: inline-block;
+    }
+    .paper-rule .dot.big {
+      width: 4.5px;
+      height: 4.5px;
+      opacity: 0.7;
+    }
+
     .paper-names {
       font-family: "Cormorant Garamond", serif;
       font-weight: 300;
-      font-size: 1.36rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      line-height: 1.4;
+      font-size: 2rem;
+      letter-spacing: 0.01em;
+      line-height: 1.15;
       color: var(--paper-ink);
     }
 
     .paper-and {
       display: block;
-      margin: 6px 0;
+      margin: 4px 0;
       font-family: "Cormorant Garamond", serif;
       font-style: italic;
-      font-size: 0.86rem;
+      font-size: 0.9rem;
       color: var(--gold);
-      letter-spacing: 0.2em;
     }
 
     .paper-detail {
@@ -243,6 +264,35 @@
     .paper-detail strong {
       color: var(--paper-ink-soft);
       font-weight: 500;
+    }
+
+    .paper-kinhmoi {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--paper-ink-soft);
+      margin: 16px 0;
+    }
+
+    .paper-vow-text {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--paper-ink-soft);
+      margin-bottom: 16px;
+    }
+
+    .paper-vow-ask {
+      font-family: "Cormorant Garamond", serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: var(--paper-ink);
     }
 
     .paper-note {
@@ -449,37 +499,36 @@
   <div class="scene" id="scene">
     <div class="paper-wrap">
       <div class="paper">
-        <span class="paper-eyebrow">Lời mời đặc biệt<br />A secret invitation</span>
-
-        <p class="paper-secret">
-          You have been chosen<br />
-          to witness our vows.
-        </p>
-
-        <p class="paper-secret-vi">
-          Bạn đã được chọn để<br />
-          chứng kiến lễ vow của chúng tôi.
-        </p>
-
-        <div class="paper-rule"></div>
+        <span class="paper-eyebrow">The Vows</span>
 
         <div class="paper-names">
-          Trang Pham
+          Trang Phạm
           <span class="paper-and">&amp;</span>
-          James Tran
+          James Trần
         </div>
+
+        <div class="paper-rule"><span class="dot"></span><span class="dot big"></span><span class="dot"></span></div>
+
+        <div class="paper-kinhmoi">Trân trọng kính mời</div>
+
+        <div class="paper-rule-sm"></div>
+
+        <p class="paper-vow-text">
+          Gần 1 năm để chuẩn bị cho lễ cưới nhưng cần hành trình hơn 10 năm bên nhau để chạm tới quyết định chúng tôi sẽ gắn kết 1 đời. Không chỉ là tình yêu mà thời điểm chúng tôi nguyện ý cùng nhau có trách nhiệm đối với tình yêu này.
+        </p>
+
+        <p class="paper-vow-ask">
+          Mong rằng những người anh/chị/em/bạn thân thương nhất có thể bên chúng tôi trong thời khắc ý nghĩa nhất.
+        </p>
 
         <div class="paper-rule-sm"></div>
 
         <div class="paper-detail">
-          <strong>Sunday · Chủ Nhật</strong><br />
-          18 October 2026<br />
-          <strong>16:00</strong><br />
-          Hotel Nikko Saigon<br />
-          District 1, Ho Chi Minh City
+          <strong>Hotel Nikko Saigon</strong><br />
+          235 Nguyễn Văn Cừ, Phường Cầu Ông Lãnh<br />
+          Quận 1, Thành phố Hồ Chí Minh<br />
+          <strong>16:00 · Chủ Nhật, ngày 18 tháng 10 năm 2026</strong>
         </div>
-
-        <p class="paper-note">— just between us 🤫 —</p>
       </div>
     </div>
 
