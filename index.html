@@ -23,8 +23,11 @@
       --bg-dark: #4b0404;
       --bg-top: #7a0405;
       --gold: #caa24e;
-      --paper: #f4efe4;
-      --ink: #302823;
+      --paper: #6e1212;
+      --paper-top: #8a1818;
+      --paper-ink: #f4ece0;
+      --paper-ink-soft: rgba(244,236,224,0.62);
+      --paper-ink-faint: rgba(244,236,224,0.42);
       --muted: #8c837a;
     }
 
@@ -115,9 +118,9 @@
     .paper {
       position: relative;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.52), rgba(255,255,255,0) 18%),
-        linear-gradient(180deg, #f7f2e8 0%, var(--paper) 100%);
-      color: var(--ink);
+        linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0) 22%),
+        linear-gradient(180deg, var(--paper-top) 0%, var(--paper) 100%);
+      color: var(--paper-ink);
       text-align: center;
       padding: 34px 24px 44px;
       min-height: 525px;
@@ -125,8 +128,8 @@
       flex-direction: column;
       justify-content: flex-start;
       box-shadow:
-        0 14px 40px rgba(85,50,35,0.08),
-        inset 0 0 0 1px rgba(120,95,72,0.05);
+        0 14px 40px rgba(0,0,0,0.4),
+        inset 0 0 0 1px rgba(0,0,0,0.15);
       overflow: hidden;
       border-radius: 2px 2px 0 0;
     }
@@ -136,12 +139,12 @@
       position: absolute;
       inset: 0;
       background-image:
-        radial-gradient(rgba(126,102,81,0.10) 0.6px, transparent 0.8px),
-        radial-gradient(rgba(255,255,255,0.18) 0.5px, transparent 0.75px);
+        radial-gradient(rgba(0,0,0,0.14) 0.6px, transparent 0.8px),
+        radial-gradient(rgba(255,255,255,0.07) 0.5px, transparent 0.75px);
       background-size: 12px 12px, 15px 15px;
       background-position: 0 0, 3px 4px;
       opacity: 0.5;
-      mix-blend-mode: multiply;
+      mix-blend-mode: normal;
       pointer-events: none;
     }
 
@@ -153,9 +156,9 @@
       top: 0;
       height: 16px;
       background:
-        radial-gradient(circle at 6px 18px, transparent 10px, rgba(0,0,0,0.03) 10.5px, rgba(0,0,0,0.015) 11px, transparent 12px) repeat-x;
+        radial-gradient(circle at 6px 18px, transparent 10px, rgba(0,0,0,0.18) 10.5px, rgba(0,0,0,0.08) 11px, transparent 12px) repeat-x;
       background-size: 26px 18px;
-      opacity: 0.3;
+      opacity: 0.4;
       pointer-events: none;
     }
 
@@ -176,13 +179,14 @@
       font-weight: 300;
       line-height: 1.65;
       margin-bottom: 6px;
+      color: var(--paper-ink);
     }
 
     .paper-secret-vi {
       font-family: "Cormorant Garamond", serif;
       font-style: italic;
       font-size: 0.72rem;
-      color: var(--muted);
+      color: var(--paper-ink-soft);
       line-height: 1.65;
       margin-bottom: 14px;
     }
@@ -215,6 +219,7 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       line-height: 1.4;
+      color: var(--paper-ink);
     }
 
     .paper-and {
@@ -231,13 +236,13 @@
       font-size: 0.52rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--paper-ink-faint);
       line-height: 2;
     }
 
     .paper-detail strong {
-      color: var(--ink);
-      font-weight: 400;
+      color: var(--paper-ink-soft);
+      font-weight: 500;
     }
 
     .paper-note {
@@ -453,7 +458,7 @@
 
         <p class="paper-secret-vi">
           Bạn đã được chọn để<br />
-          chứng kiến lời thề của chúng tôi.
+          chứng kiến lễ vow của chúng tôi.
         </p>
 
         <div class="paper-rule"></div>
