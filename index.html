@@ -92,11 +92,11 @@
       /* --rise = how far the card travels up when opened.
          Less negative = card stays more nested in the envelope (more dramatic).
          Nudge by ~10px if the bottom line ever touches the flap on your real art. */
-      --rise: -158px;
+      --rise: -176px;
       position: absolute;
       left: 50%;
       bottom: 62px;
-      width: min(52vw, 372px);
+      width: min(60vw, 428px);
       transform: translateX(-50%) translateY(260px);
       opacity: 0;
       z-index: 8;
@@ -125,8 +125,8 @@
         linear-gradient(180deg, var(--cream-paper-top) 0%, var(--cream-paper) 100%);
       color: var(--cream-ink);
       text-align: center;
-      padding: 30px 28px 92px;
-      min-height: 560px;
+      padding: 30px 28px 62px;
+      min-height: 490px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -174,23 +174,32 @@
       line-height: 1.9;
     }
 
+    .paper-eyebrow .eyebrow-vi,
+    .paper-eyebrow .eyebrow-en {
+      display: block;
+    }
+
+    .paper-eyebrow .eyebrow-en {
+      opacity: 0.72;
+    }
+
     .paper-secret {
       font-family: "Cormorant Garamond", serif;
       font-style: italic;
-      font-size: 0.98rem;
+      font-size: 0.92rem;
       font-weight: 300;
-      line-height: 1.65;
-      margin-bottom: 6px;
-      color: var(--paper-ink);
+      line-height: 1.35;
+      margin-bottom: 4px;
+      color: var(--cream-ink);
     }
 
     .paper-secret-vi {
       font-family: "Cormorant Garamond", serif;
       font-style: italic;
-      font-size: 0.72rem;
-      color: var(--paper-ink-soft);
-      line-height: 1.65;
-      margin-bottom: 14px;
+      font-size: 0.66rem;
+      color: var(--cream-ink-soft);
+      line-height: 1.4;
+      margin-bottom: 10px;
     }
 
     .paper-rule-sm {
@@ -252,16 +261,6 @@
     }
 
     .paper-detail strong { color: var(--cream-ink-soft); font-weight: 500; }
-
-    .paper-kinhmoi {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--cream-ink-soft);
-      margin: 12px 0;
-    }
 
     .paper-vow-text {
       font-family: "Cormorant Garamond", serif;
@@ -348,7 +347,7 @@
     @media (max-width: 700px) {
       .scene { width: 100vw; height: 100svh; }
       .paper-wrap { --rise: clamp(-150px, -17svh, -128px); width: clamp(255px, 70vw, 330px); bottom: clamp(72px, 9svh, 96px); }
-      .paper { padding: 24px 18px 84px; min-height: clamp(430px, 58svh, 500px); }
+      .paper { padding: 24px 18px 56px; min-height: clamp(380px, 52svh, 440px); }
       .paper-eyebrow { margin-bottom: 16px; }
       .paper-secret { font-size: 0.92rem; }
       .paper-secret-vi { font-size: 0.72rem; }
@@ -363,13 +362,18 @@
 
     @media (max-width: 700px) and (max-height: 760px) {
       .scene { height: 100svh; }
-      .paper-wrap { --rise: clamp(-132px, -15svh, -114px); width: clamp(245px, 66vw, 308px); bottom: clamp(66px, 8svh, 88px); }
-      .paper { min-height: clamp(400px, 54svh, 460px); padding: 20px 16px 76px; }
-      .paper-secret { font-size: 0.88rem; }
-      .paper-secret-vi { font-size: 0.68rem; margin-bottom: 12px; }
-      .paper-names { font-size: 1.36rem; }
-      .paper-detail { font-size: 0.43rem; line-height: 1.75; }
-      .paper-note { font-size: 0.68rem; margin-top: 12px; }
+      .paper-wrap { --rise: clamp(-172px, -20svh, -146px); width: clamp(270px, 76vw, 332px); bottom: clamp(66px, 8svh, 88px); }
+      .paper { min-height: clamp(320px, 44svh, 370px); padding: 14px 16px 46px; }
+      .paper-eyebrow { margin-bottom: 8px; }
+      .paper-secret { font-size: 0.76rem; margin-bottom: 2px; }
+      .paper-secret-vi { font-size: 0.58rem; margin-bottom: 6px; }
+      .paper-names { font-size: 1.28rem; }
+      .paper-rule { margin: 2px 0 8px; }
+      .paper-rule-sm { margin-top: 6px; margin-bottom: 8px; }
+      .paper-vow-text { font-size: 0.68rem; line-height: 1.42; margin-bottom: 6px; }
+      .paper-vow-ask { font-size: 0.74rem; line-height: 1.38; }
+      .paper-detail { font-size: 0.42rem; line-height: 1.6; }
+      .paper-note { font-size: 0.68rem; margin-top: 8px; }
       .envelope-layer { width: clamp(400px, 128vw, 680px); bottom: clamp(48px, 6svh, 72px); }
       .hint { font-size: 0.46rem; }
     }
@@ -381,7 +385,10 @@
   <div class="scene" id="scene">
     <div class="paper-wrap">
       <div class="paper">
-        <span class="paper-eyebrow">The Vows</span>
+        <span class="paper-eyebrow"><span class="eyebrow-vi">Lời mời đặc biệt</span><span class="eyebrow-en">A Secret Invitation</span></span>
+
+        <p class="paper-secret">You have been chosen<br />to witness our vows.</p>
+        <p class="paper-secret-vi">Bạn đã được chọn để chứng kiến lễ vows của chúng tôi.</p>
 
         <div class="paper-names">
           Trang Phạm
@@ -390,8 +397,6 @@
         </div>
 
         <div class="paper-rule"><span class="dot"></span><span class="dot big"></span><span class="dot"></span></div>
-
-        <div class="paper-kinhmoi">Trân trọng kính mời</div>
 
         <div class="paper-rule-sm"></div>
 
@@ -406,10 +411,11 @@
         <div class="paper-rule-sm"></div>
 
         <div class="paper-detail">
-          <strong>Hotel Nikko Saigon</strong><br />
-          235 Nguyễn Văn Cừ, Phường Cầu Ông Lãnh<br />
-          Quận 1, Thành phố Hồ Chí Minh<br />
-          <strong>16:00 · Chủ Nhật, ngày 18 tháng 10 năm 2026</strong>
+          <strong>Sunday · Chủ Nhật</strong><br />
+          18 October 2026<br />
+          16:00<br />
+          Hotel Nikko Saigon<br />
+          District 1, Ho Chi Minh City
         </div>
       </div>
     </div>
