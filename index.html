@@ -166,12 +166,12 @@
 
     .paper-eyebrow {
       display: block;
-      margin-bottom: 20px;
-      font-size: 0.46rem;
+      margin-bottom: 14px;
+      font-size: 0.4rem;
       letter-spacing: 0.4em;
       text-transform: uppercase;
       color: var(--cream-gold);
-      line-height: 1.9;
+      line-height: 1.7;
     }
 
     .paper-eyebrow .eyebrow-vi,
@@ -179,27 +179,27 @@
       display: block;
     }
 
-    .paper-eyebrow .eyebrow-en {
+    .paper-eyebrow .eyebrow-vi {
       opacity: 0.72;
     }
 
     .paper-secret {
       font-family: "Cormorant Garamond", serif;
       font-style: italic;
-      font-size: 0.78rem;
+      font-size: 0.7rem;
       font-weight: 300;
-      line-height: 1.35;
-      margin-bottom: 4px;
+      line-height: 1.3;
+      margin-bottom: 3px;
       color: var(--cream-ink);
     }
 
     .paper-secret-vi {
       font-family: "Cormorant Garamond", serif;
       font-style: italic;
-      font-size: 0.58rem;
+      font-size: 0.52rem;
       color: var(--cream-ink-soft);
-      line-height: 1.4;
-      margin-bottom: 10px;
+      line-height: 1.35;
+      margin-bottom: 8px;
     }
 
     .paper-rule-sm {
@@ -209,7 +209,7 @@
       margin-right: auto;
       opacity: 0.4;
       width: 16px;
-      margin-top: 10px;
+      margin-top: 4px;
       margin-bottom: 12px;
     }
 
@@ -219,7 +219,7 @@
       justify-content: center;
       gap: 7px;
       width: 100%;
-      margin: 4px 0 14px;
+      margin: 4px 0 6px;
     }
     .paper-rule .dot {
       width: 4px; height: 4px;
@@ -237,7 +237,7 @@
     .paper-names {
       font-family: "Cormorant Garamond", serif;
       font-weight: 300;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       letter-spacing: 0.01em;
       line-height: 1.15;
       color: var(--cream-ink);
@@ -245,7 +245,7 @@
 
     .paper-and {
       display: block;
-      margin: 4px 0;
+      margin: 0;
       font-family: "Cormorant Garamond", serif;
       font-style: italic;
       font-size: 0.82rem;
@@ -294,7 +294,7 @@
       position: absolute;
       left: 50%;
       bottom: 56px;
-      width: min(68vw, 500px);
+      width: min(76vw, 560px);
       aspect-ratio: 1536 / 1147;
       transform: translateX(-50%);
     }
@@ -348,10 +348,10 @@
       .scene { width: 100vw; height: 100svh; }
       .paper-wrap { --rise: clamp(-150px, -17svh, -128px); width: clamp(255px, 70vw, 330px); bottom: clamp(72px, 9svh, 96px); }
       .paper { padding: 24px 18px 56px; min-height: clamp(380px, 52svh, 440px); }
-      .paper-eyebrow { margin-bottom: 16px; }
-      .paper-secret { font-size: 0.92rem; }
-      .paper-secret-vi { font-size: 0.72rem; }
-      .paper-names { font-size: 1.3rem; }
+      .paper-eyebrow { margin-bottom: 12px; }
+      .paper-secret { font-size: 0.8rem; }
+      .paper-secret-vi { font-size: 0.62rem; }
+      .paper-names { font-size: 1.1rem; }
       .paper-vow-text { font-size: 0.78rem; }
       .paper-vow-ask { font-size: 0.84rem; }
       .paper-detail { font-size: 0.46rem; line-height: 1.8; }
@@ -364,10 +364,10 @@
       .scene { height: 100svh; }
       .paper-wrap { --rise: clamp(-172px, -20svh, -146px); width: clamp(270px, 76vw, 332px); bottom: clamp(66px, 8svh, 88px); }
       .paper { min-height: clamp(320px, 44svh, 370px); padding: 14px 16px 46px; }
-      .paper-eyebrow { margin-bottom: 8px; }
-      .paper-secret { font-size: 0.76rem; margin-bottom: 2px; }
-      .paper-secret-vi { font-size: 0.58rem; margin-bottom: 6px; }
-      .paper-names { font-size: 1.14rem; }
+      .paper-eyebrow { margin-bottom: 6px; }
+      .paper-secret { font-size: 0.66rem; margin-bottom: 2px; }
+      .paper-secret-vi { font-size: 0.5rem; margin-bottom: 5px; }
+      .paper-names { font-size: 1rem; }
       .paper-rule { margin: 2px 0 8px; }
       .paper-rule-sm { margin-top: 6px; margin-bottom: 8px; }
       .paper-vow-text { font-size: 0.68rem; line-height: 1.42; margin-bottom: 6px; }
@@ -385,7 +385,7 @@
   <div class="scene" id="scene">
     <div class="paper-wrap">
       <div class="paper">
-        <span class="paper-eyebrow"><span class="eyebrow-vi">Lời mời đặc biệt</span><span class="eyebrow-en">A Secret Invitation</span></span>
+        <span class="paper-eyebrow"><span class="eyebrow-en">A Secret Invitation</span><span class="eyebrow-vi">Lời mời đặc biệt</span></span>
 
         <p class="paper-secret">You have been chosen to witness our vows.</p>
         <p class="paper-secret-vi">Bạn đã được chọn để chứng kiến lễ vows của chúng tôi.</p>
@@ -408,6 +408,8 @@
           Mong rằng những người anh/chị/em/bạn thân thương nhất có thể bên chúng tôi trong thời khắc ý nghĩa nhất.
         </p>
 
+        <p class="paper-note">Trang and James, with love</p>
+
         <div class="paper-rule-sm"></div>
 
         <div class="paper-detail">
@@ -417,8 +419,6 @@
           Hotel Nikko Saigon<br />
           District 1, Ho Chi Minh City
         </div>
-
-        <p class="paper-note">Trang and James, with love</p>
       </div>
     </div>
 
