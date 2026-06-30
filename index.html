@@ -29,6 +29,15 @@
       --paper-ink-soft: rgba(244,236,224,0.62);
       --paper-ink-faint: rgba(244,236,224,0.42);
       --muted: #8c837a;
+
+      /* Cream/ivory paper theme (matches reference layout) */
+      --cream-paper: #f3eee0;
+      --cream-paper-top: #f8f4e9;
+      --cream-border: #cdc4ac;
+      --cream-ink: #2c2722;
+      --cream-ink-soft: rgba(44,39,34,0.66);
+      --cream-ink-faint: rgba(44,39,34,0.46);
+      --cream-gold: #b08d3e;
     }
 
     html,
@@ -102,7 +111,7 @@
     .scene.opened .paper-wrap {
       transform: translateX(-50%) translateY(var(--rise));
       opacity: 1;
-      filter: drop-shadow(0 18px 28px rgba(58,32,22,0.15));
+      filter: drop-shadow(0 18px 26px rgba(0,0,0,0.35));
       transition:
         transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s,
         opacity   0.35s ease                           0.3s,
@@ -112,9 +121,9 @@
     .paper {
       position: relative;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0) 22%),
-        linear-gradient(180deg, var(--paper-top) 0%, var(--paper) 100%);
-      color: var(--paper-ink);
+        linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0) 22%),
+        linear-gradient(180deg, var(--cream-paper-top) 0%, var(--cream-paper) 100%);
+      color: var(--cream-ink);
       text-align: center;
       padding: 30px 28px 92px;
       min-height: 560px;
@@ -122,8 +131,10 @@
       flex-direction: column;
       justify-content: flex-start;
       box-shadow:
-        0 14px 40px rgba(0,0,0,0.4),
-        inset 0 0 0 1px rgba(0,0,0,0.15);
+        0 14px 40px rgba(0,0,0,0.35),
+        inset 0 0 0 1px rgba(0,0,0,0.06);
+      outline: 1px solid var(--cream-border);
+      outline-offset: -10px;
       overflow: hidden;
       border-radius: 2px 2px 0 0;
     }
@@ -133,8 +144,8 @@
       position: absolute;
       inset: 0;
       background-image:
-        radial-gradient(rgba(0,0,0,0.14) 0.6px, transparent 0.8px),
-        radial-gradient(rgba(255,255,255,0.07) 0.5px, transparent 0.75px);
+        radial-gradient(rgba(0,0,0,0.05) 0.6px, transparent 0.8px),
+        radial-gradient(rgba(255,255,255,0.5) 0.5px, transparent 0.75px);
       background-size: 12px 12px, 15px 15px;
       background-position: 0 0, 3px 4px;
       opacity: 0.5;
@@ -147,7 +158,7 @@
       left: 0; right: 0; top: 0;
       height: 16px;
       background:
-        radial-gradient(circle at 6px 18px, transparent 10px, rgba(0,0,0,0.18) 10.5px, rgba(0,0,0,0.08) 11px, transparent 12px) repeat-x;
+        radial-gradient(circle at 6px 18px, transparent 10px, rgba(0,0,0,0.05) 10.5px, rgba(0,0,0,0.02) 11px, transparent 12px) repeat-x;
       background-size: 26px 18px;
       opacity: 0.4;
       pointer-events: none;
@@ -159,7 +170,7 @@
       font-size: 0.46rem;
       letter-spacing: 0.4em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--cream-gold);
       line-height: 1.9;
     }
 
@@ -184,10 +195,10 @@
 
     .paper-rule-sm {
       height: 1px;
-      background: var(--gold);
+      background: var(--cream-gold);
       margin-left: auto;
       margin-right: auto;
-      opacity: 0.42;
+      opacity: 0.4;
       width: 16px;
       margin-top: 10px;
       margin-bottom: 12px;
@@ -196,26 +207,23 @@
     .paper-rule {
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      gap: 7px;
       width: 100%;
       margin: 4px 0 14px;
     }
-    .paper-rule::before,
-    .paper-rule::after {
-      content: '';
-      flex: 1;
-      height: 0.5px;
-      background: var(--paper-ink-faint);
-      opacity: 0.5;
-    }
     .paper-rule .dot {
-      width: 3px; height: 3px;
-      background: var(--gold);
-      opacity: 0.55;
+      width: 4px; height: 4px;
+      background: var(--cream-ink-faint);
+      opacity: 0.8;
       transform: rotate(45deg);
       display: inline-block;
     }
-    .paper-rule .dot.big { width: 4.5px; height: 4.5px; opacity: 0.7; }
+    .paper-rule .dot.big {
+      width: 6px; height: 6px;
+      background: var(--cream-gold);
+      opacity: 0.9;
+    }
 
     .paper-names {
       font-family: "Cormorant Garamond", serif;
@@ -223,7 +231,7 @@
       font-size: 1.78rem;
       letter-spacing: 0.01em;
       line-height: 1.15;
-      color: var(--paper-ink);
+      color: var(--cream-ink);
     }
 
     .paper-and {
@@ -232,18 +240,18 @@
       font-family: "Cormorant Garamond", serif;
       font-style: italic;
       font-size: 0.82rem;
-      color: var(--gold);
+      color: var(--cream-gold);
     }
 
     .paper-detail {
       font-size: 0.48rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--paper-ink-faint);
+      color: var(--cream-ink-faint);
       line-height: 1.85;
     }
 
-    .paper-detail strong { color: var(--paper-ink-soft); font-weight: 500; }
+    .paper-detail strong { color: var(--cream-ink-soft); font-weight: 500; }
 
     .paper-kinhmoi {
       font-family: "Cormorant Garamond", serif;
@@ -251,7 +259,7 @@
       font-weight: 500;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--paper-ink-soft);
+      color: var(--cream-ink-soft);
       margin: 12px 0;
     }
 
@@ -261,7 +269,7 @@
       font-size: 0.8rem;
       font-weight: 300;
       line-height: 1.55;
-      color: var(--paper-ink-soft);
+      color: var(--cream-ink-soft);
       margin-bottom: 12px;
     }
 
@@ -271,7 +279,7 @@
       font-weight: 500;
       font-size: 0.86rem;
       line-height: 1.5;
-      color: var(--paper-ink);
+      color: var(--cream-ink);
     }
 
     .paper-note {
@@ -279,8 +287,8 @@
       font-family: "Cormorant Garamond", serif;
       font-style: italic;
       font-size: 0.76rem;
-      color: var(--gold);
-      opacity: 0.82;
+      color: var(--cream-gold);
+      opacity: 0.9;
     }
 
     .envelope-layer {
@@ -303,11 +311,11 @@
     }
 
     .env-back { z-index: 4; pointer-events: none; clip-path: inset(0 0 52% 0); }
-    .env-back img { opacity: 0; mix-blend-mode: multiply; transition: opacity 0.5s ease 0.1s; }
+    .env-back img { opacity: 0; mix-blend-mode: normal; transition: opacity 0.5s ease 0.1s; }
     .scene.opened .env-back img { opacity: 1; }
 
     .env-front { z-index: 12; pointer-events: none; clip-path: inset(48% 0 0 0); }
-    .env-front img { opacity: 0; mix-blend-mode: multiply; transition: opacity 0.5s ease 0.1s; }
+    .env-front img { opacity: 0; mix-blend-mode: normal; transition: opacity 0.5s ease 0.1s; }
     .scene.opened .env-front img { opacity: 1; }
 
     .env-closed { z-index: 15; cursor: pointer; }
